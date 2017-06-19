@@ -1,0 +1,44 @@
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:3.0.8'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.5"
+}
+
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = sourceCompatibility
+
+    apply plugin: 'idea'
+}
+
+subprojects {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+
+        protobufVersion = '3.2.0'
+        grpcVersion = '1.2.0'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.projectlombok:lombok:1.16.16'
+        compile 'org.apache.commons:commons-lang3:3.6'
+    }
+}

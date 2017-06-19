@@ -1,0 +1,16 @@
+rootProject.name = 'dblog'
+include 'sso'
+include 'scheduler'
+include 'web'
+include 'personal'
+
+include 'lib-common:db'
+include 'lib-common:qiniu'
+include 'lib-common:rabbit'
+include 'lib-common:redis'
+include 'lib-common:rpc'
+include 'lib-common:server'
+include 'lib-common:session'
+include 'lib-common:util'
+include 'lib-common:cache'
+
