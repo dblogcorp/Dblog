@@ -26,13 +26,6 @@ allprojects {
 }
 
 subprojects {
-    ext {
-        springBootVersion = '1.5.4.RELEASE'
-
-        protobufVersion = '3.2.0'
-        grpcVersion = '1.2.0'
-    }
-
     repositories {
         mavenCentral()
     }
