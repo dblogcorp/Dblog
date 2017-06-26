@@ -5,7 +5,11 @@ import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
 buildscript {
     repositories {
-        jcenter()
+        mavenLocal()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/jcenter/"
+        }
+        mavenCentral()
     }
 
     dependencies {
@@ -27,6 +31,10 @@ allprojects {
 
 subprojects {
     repositories {
+        mavenLocal()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/jcenter/"
+        }
         mavenCentral()
     }
 
