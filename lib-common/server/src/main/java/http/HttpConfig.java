@@ -22,9 +22,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.http.HttpStatus;
 
-/**
- * Created by Pelin on 17/6/20.
- */
+
 @Import({
         ServerPropertiesAutoConfiguration.class,
         DispatcherServletAutoConfiguration.class,
