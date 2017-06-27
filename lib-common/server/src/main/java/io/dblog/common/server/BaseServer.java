@@ -1,3 +1,5 @@
+package io.dblog.common.server;
+
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;

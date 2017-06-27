@@ -1,4 +1,4 @@
-package http;
+package io.dblog.common.server.http;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.StatisticsHandler;
