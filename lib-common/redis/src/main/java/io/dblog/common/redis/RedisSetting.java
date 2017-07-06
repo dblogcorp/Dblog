@@ -2,6 +2,8 @@ package io.dblog.common.redis;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * Redis Setting
@@ -10,6 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  */
 @Data
+@Component
 @ConfigurationProperties(prefix = "cache.redis")
 public class RedisSetting {
 
@@ -31,4 +34,6 @@ public class RedisSetting {
     private Integer maxWait;
 
     private Integer minIdle;
+
+    private JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 }
