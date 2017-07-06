@@ -1,5 +1,6 @@
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-cache:$springBootVersion"
+    compile "redis.clients:jedis:$jedisVersion"
 
-    compile "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
+    compile project(":lib-common:redis");
 }

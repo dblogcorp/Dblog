@@ -1,13 +1,5 @@
-version 'unspecified'
+dependencies  {
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.5
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "redis.clients:jedis:$jedisVersion"
 }
