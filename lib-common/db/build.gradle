@@ -1,4 +1,7 @@
 dependencies {
+    compile "org.springframework.boot:spring-boot-starter-jpa:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+
     compile "org.mariadb.jdbc:mariadb-java-client:$jdbcClient"
     compile "com.zaxxer:HikariCP:$hikariCPVersion"
     compile "commons-dbutils:commons-dbutils:$dbUtilsVersion"
