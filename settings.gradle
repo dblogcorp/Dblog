@@ -14,5 +14,6 @@ include 'lib-common:session'
 include 'lib-common:util'
 include 'lib-common:cache'
 include 'lib-common:exception'
-findProject(':lib-common:exception')?.name = 'exception'
+
+include 'lib-proto:sso-rpc'
 

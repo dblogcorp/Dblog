@@ -16,6 +16,7 @@ buildscript {
     dependencies {
         classpath "com.bmuschko:gradle-docker-plugin:3.0.8"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
     }
 }
 
@@ -44,7 +45,5 @@ subprojects {
         compile "org.projectlombok:lombok:$lombokVersion"
         compile "org.apache.commons:commons-lang3:$commonsLang3Version"
         compile "com.google.guava:guava:$guavaVersion"
-        compile "org.springframework.boot:spring-boot-starter-data-jpa"
-
     }
 }

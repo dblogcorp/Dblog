@@ -1,0 +1,22 @@
+apply plugin: 'idea'
+apply plugin: 'com.google.protobuf'
+
+dependencies {
+    compile "com.google.protobuf:protobuf-java:$protobufVersion"
+}
+
+protobuf {
+    generatedFilesBaseDir = "$projectDir/gen"
+
+    clean {
+        delete generatedFilesBaseDir
+    }
+}
+
+idea {
+    module {
+        sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/java");
+        // If you have additional sourceSets and/or codegen plugins, add all of them
+        sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/grpc");
+    }
+}
