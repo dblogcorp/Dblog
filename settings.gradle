@@ -17,4 +17,3 @@ include 'lib-common:exception'
 include 'lib-proto:sso-rpc'
 include 'lib-proto:blog-rpc'
 include 'lib-proto:hub-rpc'
-
