@@ -37,7 +37,7 @@ import org.springframework.http.HttpStatus;
 @Configuration
 public class HttpConfig {
 
-    private final static Logger logger = LoggerFactory.getLogger(HttpConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(HttpConfig.class);
 
     private static volatile Server server;
 
@@ -110,7 +110,7 @@ public class HttpConfig {
 
     private static class JettyGracefulShutdown implements ApplicationListener<ContextClosedEvent> {
 
-        private final static Logger logger = LoggerFactory.getLogger(JettyGracefulShutdown.class);
+        private static final Logger logger = LoggerFactory.getLogger(JettyGracefulShutdown.class);
 
         @Override
         public void onApplicationEvent(ContextClosedEvent event) {

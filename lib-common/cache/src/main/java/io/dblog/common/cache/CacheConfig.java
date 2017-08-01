@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 @ComponentScan(basePackageClasses = CacheConfig.class)
 public class CacheConfig extends CachingConfigurerSupport {
 
-    private final static Logger logger = LoggerFactory.getLogger(CacheConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(CacheConfig.class);
 
     @Bean
     public KeyGenerator keyGenerator() {

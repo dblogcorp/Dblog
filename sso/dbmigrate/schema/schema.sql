@@ -11,7 +11,7 @@ CREATE TABLE `accounts` (
   `name` varchar(32) NOT NULL COMMENT '昵称, 可以改变',
   `password` char(128) NOT NULL COMMENT '用户密码',
   `gravatar` varchar(512) NOT NULL COMMENT '用户头像',
-  `sex` tinyint(1) unsigned DEFAULT NULL COMMENT '用户性别',
+  `sex` tinyint(1) unsigned DEFAULT NULL COMMENT '用户性别, 1 --男, 2 --女',
   `location` varchar(32) DEFAULT NULL COMMENT '所在地区',
   `company` varchar(64) DEFAULT NULL COMMENT '所在公司',
   `website` varchar(64) DEFAULT NULL COMMENT '个人网站',
