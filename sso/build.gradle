@@ -1,5 +1,5 @@
 dependencies {
     compile project(":lib-common:db")
 
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+
 }

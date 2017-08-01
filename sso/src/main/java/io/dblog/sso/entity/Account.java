@@ -9,7 +9,7 @@ import javax.persistence.Entity;
  */
 @Data
 @Entity
-public class Accounts extends BaseEntity {
+public class Account extends BaseEntity {
 
     private Short status;
 
