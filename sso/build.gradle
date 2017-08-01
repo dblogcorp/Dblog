@@ -1,5 +1,6 @@
 dependencies {
     compile project(":lib-common:db")
+    compile project(":lib-proto:sso-rpc")
 
 
 }
