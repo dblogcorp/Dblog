@@ -8,4 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface AccountRepository extends CrudRepository<Account, Integer> {
 
+    Account findByUserName(String userName);
+
+    Account findByUserNameOrEmail(String userName, String email);
 }

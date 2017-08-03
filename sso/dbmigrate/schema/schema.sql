@@ -4,11 +4,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `status` tinyint(1) NOT NULL COMMENT '1 --新用户, 2 -- 已激活, 3 --已锁定',
-  `email` varchar(64) DEFAULT NULL COMMENT '邮件地址',
+  `status` tinyint(1) NOT NULL COMMENT '1 --未激活, 2 -- 已激活, 3 --已锁定',
+  `email` varchar(64) NOT NULL COMMENT '邮件地址',
   `email_validation` tinyint(1) unsigned NOT NULL DEFAULT 1 COMMENT '1 --未验证, 2 --已验证',
   `user_name` varchar(32) NOT NULL COMMENT '用户名, 不可改变, 只允许包含字符和数字以及连字号, 不允许以连字号开头或结尾',
-  `name` varchar(32) NOT NULL COMMENT '昵称, 可以改变',
+  `name` varchar(32) DEFAULT NULL COMMENT '昵称, 可以改变',
   `password` char(128) NOT NULL COMMENT '用户密码',
   `gravatar` varchar(512) NOT NULL COMMENT '用户头像',
   `sex` tinyint(1) unsigned DEFAULT NULL COMMENT '用户性别, 1 --男, 2 --女',
@@ -21,6 +21,7 @@ CREATE TABLE `accounts` (
   `twitter_add` varchar(64) DEFAULT NULL COMMENT 'Twitter 地址',
   `weibo_add` varchar(64) DEFAULT NULL COMMENT '微博地址',
   `zhihu_add` varchar(64) DEFAULT NULL COMMENT '知乎地址',
+  `intro` varchar(128) DEFAULT NULL COMMENT '用户简介',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '最后更新时间',
   `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间'

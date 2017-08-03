@@ -19,15 +19,15 @@ public class RegisterForm extends BaseForm {
     @Size(min = 1, max = 30)
     private String userName;
 
-    @NotBlank(message = "register.email.nont.null")
+    @NotBlank(message = "register.email.not.null")
     @Size(min = 6, max = 32)
     private String email;
 
-    @NotBlank(message = "register.password.nont.null")
+    @NotBlank(message = "register.password.not.null")
     @Size(min = 7, max= 72)
     private String password;
 
-    @NotBlank(message = "register.repeat.password.nont.null")
+    @NotBlank(message = "register.repeat.password.not.null")
     @Size(min = 7, max= 72)
     private String repeatPassword;
 

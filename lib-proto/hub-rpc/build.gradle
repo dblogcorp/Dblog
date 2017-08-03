@@ -35,8 +35,6 @@ idea {
     module {
         sourceDirs += file("src/main/proto")
         sourceDirs += file("src/gen/main/java")
-        sourceDirs += file("src/gen/main/rpc")
-        generatedSourceDirs += file("src/gen/main/java")
-        generatedSourceDirs += file("src/gen/main/rpc")
+        sourceDirs += file("src/gen/main/grpc")
     }
 }
