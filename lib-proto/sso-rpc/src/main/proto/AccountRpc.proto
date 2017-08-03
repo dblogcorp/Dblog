@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_generic_services = true;
+option java_package = "io.dblog.proto.sso.grpc";
+option java_outer_classname = "AccountRpcProto";
+
+message AccountRpc {
+    int32 id = 1;
+    string user_name = 2;
+    string email = 3;
+    string gravatar = 4;
+    int32 email_validation = 5;
+}
+
+message GetAccountRequest {
+
+}
+
+message GetAccountResponse {
+
+}
+
+service AccountRpcService {
+    rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
+}

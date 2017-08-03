@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_generic_services = true;
+option java_package = "io.dblog.proto.sso.grpc";
+option java_outer_classname = "NotificationRpcProto";
+
+message NotificationProto {
+    int32 triggerId = 1; // account id  who triggered the notification
+    string triggerName = 2; // account name who triggered the notification
+    int32 type = 3;
+    int32 status = 4;
+    string originalTopic = 5;
+    string originalAddress = 6;
+    string content = 7;
+}
+
+message FindAllNotificationsRequest {
+
+}
+
+message FindAllNotificationResponse {
+
+}
+
+message FindUnReadNotificationsRequest {
+
+}
+
+message FindUnreadNotificationsResponse {
+
+}
+
+service NotificationRpcService {
+    rpc FindAllNotifications (FindAllNotificationsRequest) returns (FindAllNotificationResponse);
+    rpc FindUnReadNotifications (FindUnReadNotificationsRequest) returns (FindUnreadNotificationsResponse);
+}
