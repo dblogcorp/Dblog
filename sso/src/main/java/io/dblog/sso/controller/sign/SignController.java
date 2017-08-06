@@ -25,7 +25,7 @@ public class SignController {
     public void register(@Valid RegisterForm form, HttpServletRequest request,
                       @RequestHeader(value = "User-Agent") String userAgent,
                       @RequestAttribute String realRemoteAddress) {
-        registerService.register(request, form);
+        registerService.register(request, form, userAgent, realRemoteAddress);
     }
 
     @RequestMapping(value = "/in", method = RequestMethod.POST)

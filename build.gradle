@@ -30,6 +30,9 @@ allprojects {
     targetCompatibility = sourceCompatibility
 
     apply plugin: 'idea'
+    buildDir = new File(
+            rootProject.projectDir, "build/" + project.name
+    )
 }
 
 subprojects {

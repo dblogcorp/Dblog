@@ -1,5 +1,6 @@
 dependencies {
     compile project(":lib-common:db")
+    compile project(":lib-common:util")
     compile project(":lib-proto:sso-rpc")
-    compile project(":lib-proto:sso-api")
+    compile project(":lib-proto:sso-inter")
 }

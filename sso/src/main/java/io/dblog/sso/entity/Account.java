@@ -46,4 +46,8 @@ public class Account extends BaseEntity {
     private String zhihuAdd;
 
     private String intro;
+
+    private String userAgent;
+
+    private String registerIp;
 }

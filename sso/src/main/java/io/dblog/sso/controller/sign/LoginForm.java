@@ -1,6 +1,6 @@
 package io.dblog.sso.controller.sign;
 
-import io.dblog.sso.BaseForm;
+import io.dblog.sso.controller.BaseForm;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package io.dblog.sso;
+package io.dblog.sso.controller;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -25,5 +25,4 @@ public class BaseForm implements Validator {
     protected void rejectValue(Errors errors, String field, String key) {
         errors.rejectValue(field, field, key);
     }
-
 }

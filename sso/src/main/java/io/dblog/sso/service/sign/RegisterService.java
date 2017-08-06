@@ -26,7 +26,8 @@ public class RegisterService {
     private LoginService loginService;
 
     @Transactional
-    public AccountProto.Account register(HttpServletRequest request, RegisterForm form) {
+    public AccountProto.Account register(HttpServletRequest request, RegisterForm form,
+                                         String userAgent, String registerIp) {
         String email = form.getEmail();
         String userName = form.getUserName();
         if (accountService.checkAccountExists(userName, email)) {
@@ -42,6 +43,8 @@ public class RegisterService {
         account.setPassword(form.getPassword());
         account.setGravatar("");
         account.setEmailValidation(false);
+        account.setUserAgent(userAgent);
+        account.setRegisterIp(registerIp);
         if (!accountService.save(account)) {
             // Throw Exception
             return null;

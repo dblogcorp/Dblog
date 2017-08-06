@@ -22,6 +22,8 @@ CREATE TABLE `accounts` (
   `weibo_add` varchar(64) DEFAULT NULL COMMENT '微博地址',
   `zhihu_add` varchar(64) DEFAULT NULL COMMENT '知乎地址',
   `intro` varchar(128) DEFAULT NULL COMMENT '用户简介',
+  `user_agent` varchar(128) DEFAULT NULL COMMENT '注册 UA',
+  `register_ip` varchar(20) DEFAULT NULL COMMENT '注册 IP',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '最后更新时间',
   `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间'
