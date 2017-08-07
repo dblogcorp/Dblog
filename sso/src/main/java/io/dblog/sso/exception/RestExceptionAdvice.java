@@ -1,4 +1,4 @@
-package io.dblog.sso;
+package io.dblog.sso.exception;
 
 import io.dblog.common.exception.BadRequestException;
 import io.dblog.common.exception.ForbiddenException;
@@ -7,6 +7,7 @@ import io.dblog.common.exception.NotFoundException;
 import io.dblog.common.exception.Result;
 import io.dblog.common.exception.UnauthorizedException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +27,13 @@ public class RestExceptionAdvice {
     @ResponseBody
     public Result handleBadRequestException(BadRequestException e) {
         return Result.failed(e.getCode(), e.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public Result handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        return Result.failed(400, e.getMessage());
     }
 
     // 401
@@ -59,4 +67,6 @@ public class RestExceptionAdvice {
     public Result handleGoneException(GoneException e) {
         return Result.failed(e.getCode(), e.getMessage());
     }
+
+
 }

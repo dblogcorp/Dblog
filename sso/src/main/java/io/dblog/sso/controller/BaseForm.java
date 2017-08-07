@@ -23,6 +23,6 @@ public class BaseForm implements Validator {
     }
 
     protected void rejectValue(Errors errors, String field, String key) {
-        errors.rejectValue(field, field, key);
+        errors.rejectValue(field, key);
     }
 }

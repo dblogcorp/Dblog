@@ -2,6 +2,7 @@ dependencies {
     compile project(":lib-common:db")
     compile project(":lib-common:util")
     compile project(":lib-common:exception")
+    compile project(":lib-common:email-client")
     compile project(":lib-proto:sso-rpc")
     compile project(":lib-proto:sso-inter")
 }

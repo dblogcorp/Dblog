@@ -1,5 +1,6 @@
 package io.dblog.sso.service.sign;
 
+import io.dblog.common.exception.BadRequestException;
 import io.dblog.proto.sso.api.AccountProto;
 import io.dblog.sso.constant.AccountConstant;
 import io.dblog.sso.controller.sign.RegisterForm;
@@ -31,8 +32,7 @@ public class RegisterService {
         String email = form.getEmail();
         String userName = form.getUserName();
         if (accountService.checkAccountExists(userName, email)) {
-            // Throw Exception
-            return null;
+            throw new BadRequestException("register.account.existed");
         }
 
         Account account = new Account();
@@ -46,8 +46,7 @@ public class RegisterService {
         account.setUserAgent(userAgent);
         account.setRegisterIp(registerIp);
         if (!accountService.save(account)) {
-            // Throw Exception
-            return null;
+            throw new BadRequestException("register.account.save.failed");
         }
         emailService.sendRegisterEmail(account);
 

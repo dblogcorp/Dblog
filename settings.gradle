@@ -13,9 +13,10 @@ include 'lib-common:session'
 include 'lib-common:util'
 include 'lib-common:cache'
 include 'lib-common:exception'
+include 'lib-common:email-client'
 
 include 'lib-proto:sso-rpc'
 include 'lib-proto:blog-rpc'
 include 'lib-proto:hub-rpc'
 include 'lib-proto:sso-inter'
-
+include 'lib-proto:email-client'
