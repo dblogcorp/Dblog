@@ -4,6 +4,7 @@ import io.dblog.proto.sso.api.AccountProto;
 import io.dblog.sso.constant.AccountConstant;
 import io.dblog.sso.entity.Account;
 import io.dblog.sso.repository.AccountRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -34,8 +35,11 @@ public class AccountService {
     }
 
     public Boolean checkAccountExists(String userName, String email) {
-        Account account = accountRepository.findByUserNameOrEmail(userName, email);
+        if (StringUtils.isBlank(userName) && StringUtils.isBlank(email)) {
+            return false;
+        }
 
+        Account account = accountRepository.findByUserNameOrEmail(userName, email);
         return null != account;
     }
 
@@ -47,5 +51,13 @@ public class AccountService {
         }
 
         return true;
+    }
+
+    public Account findByUserName(String userName) {
+        if (StringUtils.isBlank(userName)) {
+            return null;
+        }
+
+        return accountRepository.findByUserName(userName);
     }
 }

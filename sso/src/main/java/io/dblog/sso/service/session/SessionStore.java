@@ -17,7 +17,7 @@ public class SessionStore {
     @Autowired
     private RedisManager redisManager;
 
-    private String set(String sid, Session session) {
+    public String set(String sid, Session session) {
         int expireSeconds;
         if (null != session.getRememberMe() && session.getRememberMe()) {
             expireSeconds = 3600;
