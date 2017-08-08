@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Pelin on 17/8/3.
+ * {@code EmailService}
+ *
+ * @author Pelin_li(penglong95.li@gmail.com)
  */
 @Service
 public class EmailService {

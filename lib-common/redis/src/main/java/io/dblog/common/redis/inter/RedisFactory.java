@@ -1,4 +1,4 @@
-package io.dblog.common.redis.api;
+package io.dblog.common.redis.inter;
 
 import io.dblog.common.redis.RedisSetting;
 import io.dblog.common.redis.impl.RedisManagerImpl;

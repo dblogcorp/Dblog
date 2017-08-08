@@ -1,7 +1,7 @@
 package io.dblog.common.redis.impl;
 
 import io.dblog.common.redis.RedisSetting;
-import io.dblog.common.redis.api.RedisManager;
+import io.dblog.common.redis.inter.RedisManager;
 import redis.clients.jedis.BinaryJedis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

@@ -51,7 +51,7 @@ public class RegisterService {
         emailService.sendRegisterEmail(account);
 
         String sid = (String) request.getAttribute("sid");
-        loginService.updateLoginSession(sid);
+        loginService.updateLoginSession(account.getUserName(), sid);
 
         return accountService.toProto(account);
     }

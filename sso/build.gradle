@@ -3,6 +3,10 @@ dependencies {
     compile project(":lib-common:util")
     compile project(":lib-common:exception")
     compile project(":lib-common:email-client")
+    compile project(":lib-common:redis")
+
     compile project(":lib-proto:sso-rpc")
     compile project(":lib-proto:sso-inter")
+
+    compile "com.google.code.gson:gson:$gsonVersion"
 }

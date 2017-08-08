@@ -22,7 +22,7 @@ public class LoginService {
 
     }
 
-    public void updateLoginSession(String sid) {
+    public void updateLoginSession(String userName, String sid) {
 
     }
 
