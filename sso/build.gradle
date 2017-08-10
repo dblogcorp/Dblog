@@ -4,9 +4,11 @@ dependencies {
     compile project(":lib-common:exception")
     compile project(":lib-common:email-client")
     compile project(":lib-common:redis")
+    compile project(":lib-common:role")
 
     compile project(":lib-proto:sso-rpc")
     compile project(":lib-proto:sso-inter")
 
     compile "com.google.code.gson:gson:$gsonVersion"
+    compile "org.springframework.boot:spring-boot-starter-aop:$springBootVersion"
 }

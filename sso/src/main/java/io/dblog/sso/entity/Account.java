@@ -25,6 +25,8 @@ public class Account extends BaseEntity {
 
     private String gravatar;
 
+    private Integer role;
+
     private Short sex;
 
     private String location;

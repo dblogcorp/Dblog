@@ -2,12 +2,10 @@ package io.dblog.sso.service.sign;
 
 import io.dblog.common.exception.BadRequestException;
 import io.dblog.sso.controller.sign.LoginForm;
-import io.dblog.sso.controller.sign.RegisterForm;
 import io.dblog.sso.entity.Account;
 import io.dblog.sso.service.account.AccountService;
 import io.dblog.sso.service.session.Session;
 import io.dblog.sso.service.session.SessionStore;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +43,7 @@ public class LoginService {
 
     public void updateLoginSession(Account account, String sid) {
         if (null == account) {
-            logger.error("Login Error: user not exists, userName=" + userName);
+            logger.error("Login Error: user not exists");
             throw new BadRequestException("login.account.is.not.existed");
         }
 

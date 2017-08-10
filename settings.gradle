@@ -20,3 +20,6 @@ include 'lib-proto:blog-rpc'
 include 'lib-proto:hub-rpc'
 include 'lib-proto:sso-inter'
 include 'lib-proto:email-client'
+include 'lib-common:role'
+findProject(':lib-common:role')?.name = 'role'
+

@@ -1,6 +1,8 @@
 package io.dblog.sso.service.sign;
 
 import io.dblog.common.exception.BadRequestException;
+import io.dblog.common.role.RoleConstant;
+import io.dblog.common.role.RoleEnum;
 import io.dblog.proto.sso.api.AccountProto;
 import io.dblog.sso.constant.AccountConstant;
 import io.dblog.sso.controller.sign.RegisterForm;
@@ -41,6 +43,7 @@ public class RegisterService {
         account.setName(form.getUserName());
         account.setEmail(form.getEmail());
         account.setPassword(form.getPassword());
+        account.setRole(RoleEnum.GENERAL.getId());
         account.setGravatar("");
         account.setEmailValidation(false);
         account.setUserAgent(userAgent);
