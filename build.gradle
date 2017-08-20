@@ -48,5 +48,8 @@ subprojects {
         compile "org.projectlombok:lombok:$lombokVersion"
         compile "org.apache.commons:commons-lang3:$commonsLang3Version"
         compile "com.google.guava:guava:$guavaVersion"
+
+        testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+        testCompile "junit:junit:4.12"
     }
 }

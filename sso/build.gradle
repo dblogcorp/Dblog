@@ -1,4 +1,5 @@
 dependencies {
+    compile project(":lib-common:server")
     compile project(":lib-common:db")
     compile project(":lib-common:util")
     compile project(":lib-common:exception")
@@ -11,4 +12,6 @@ dependencies {
 
     compile "com.google.code.gson:gson:$gsonVersion"
     compile "org.springframework.boot:spring-boot-starter-aop:$springBootVersion"
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
