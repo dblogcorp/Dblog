@@ -8,8 +8,6 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * Redis Setting
  *
- *
- *
  */
 @Data
 @Component

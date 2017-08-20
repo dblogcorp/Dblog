@@ -16,7 +16,7 @@ CREATE TABLE `accounts` (
   `company` varchar(64) DEFAULT NULL COMMENT '所在公司',
   `website` varchar(64) DEFAULT NULL COMMENT '个人网站',
   `github_add` varchar(128) DEFAULT NULL COMMENT 'GitHub 地址',
-  `sign` char(512) DEFUALT NULL COMMENT '用户签名',
+  `sign` varchar(512) DEFAULT NULL COMMENT '用户签名',
   `coding_add` varchar(64) DEFAULT NULL COMMENT 'Coding.NET 地址',
   `twitter_add` varchar(64) DEFAULT NULL COMMENT 'Twitter 地址',
   `weibo_add` varchar(64) DEFAULT NULL COMMENT '微博地址',
@@ -26,7 +26,7 @@ CREATE TABLE `accounts` (
   `register_ip` varchar(20) DEFAULT NULL COMMENT '注册 IP',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '最后更新时间',
-  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间'
+  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间',
   PRIMARY KEY (`id`),
   KEY `idx_user_name` (`user_name`),
   KEY `idx_email` (`email`)
@@ -40,7 +40,9 @@ CREATE TABLE `account_relationships` (
   `relation_account_id` int(10) NOT NULL COMMENT '用户对应的关系用户 ID',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '最后更新时间',
-  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间'
+  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_account_id` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户关系表';
 
 DROP TABLE IF EXISTS `notifications`;
@@ -55,7 +57,10 @@ CREATE TABLE `notifications` (
   `content` text DEFAULT NULL COMMENT '评论/@/点赞 内容',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '最后更新时间',
-  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间'
+  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_account_id` (`account_id`),
+  KEY `idx_account_type` (`account_id`, `type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='通知表';
 
 DROP TABLE IF EXISTS `private_letters`;
@@ -66,7 +71,11 @@ CREATE TABLE `private_letters` (
   `content` text NOT NULL COMMENT '私信内容',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '最后更新时间',
-  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间'
+  `deleted_at` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_account_id` (`account_id`),
+  KEY `idx_letter_by` (`letter_by`),
+  KEY `idx_account_and_by` (`account_id`, `letter_by`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='私信表';
 
 -- 暂时没想好
