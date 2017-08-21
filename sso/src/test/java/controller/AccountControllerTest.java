@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class AccountControllerTest {
+
 }

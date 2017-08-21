@@ -14,18 +14,18 @@ import redis.clients.jedis.JedisPoolConfig;
 @ConfigurationProperties(prefix = "cache.redis")
 public class RedisSetting {
 
-    private String redisHost;
+    private String host;
 
-    private Integer redisPort;
+    private Integer port;
 
     private Integer timeOut;
 
     private String password;
 
     // Database Index, default 0
-    private Integer redisDataBase = 0;
+    private Integer database = 0;
 
-    private Integer redisMaxActive;
+    private Integer maxActive;
 
     private Integer maxIdle;
 

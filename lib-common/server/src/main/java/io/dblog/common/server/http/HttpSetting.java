@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by Pelin on 17/6/20.
  */
-@ConfigurationProperties(prefix = "dblog.http")
 @Data
+@ConfigurationProperties(prefix = "dblog.http")
 public class HttpSetting {
 
     @Valid

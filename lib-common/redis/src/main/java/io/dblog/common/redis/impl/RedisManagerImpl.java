@@ -16,11 +16,11 @@ public class RedisManagerImpl implements RedisManager {
     public RedisManagerImpl(RedisSetting setting) {
         pool = new JedisPool(
                 setting.getJedisPoolConfig(),
-                setting.getRedisHost(),
-                setting.getRedisPort(),
+                setting.getHost(),
+                setting.getPort(),
                 setting.getTimeOut(),
                 setting.getPassword(),
-                setting.getRedisDataBase()
+                setting.getDatabase()
         );
     }
 
@@ -69,5 +69,15 @@ public class RedisManagerImpl implements RedisManager {
         try (BinaryJedis client = pool.getResource()) {
             return client.setex(key, exp, value);
         }
+    }
+
+    @Override
+    public Long expire(String key, int expire) {
+        return null;
+    }
+
+    @Override
+    public Long del(String key) {
+        return null;
     }
 }
