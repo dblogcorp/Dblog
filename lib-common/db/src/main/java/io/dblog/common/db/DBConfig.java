@@ -5,6 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.mariadb.jdbc.Driver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import javax.sql.DataSource;
@@ -15,7 +16,8 @@ import javax.sql.DataSource;
 @Import({
         DBSetting.class
 })
-@ComponentScan(basePackageClasses = DBConfig.class)
+@ComponentScan
+@Configuration
 public class DBConfig {
 
     @Bean

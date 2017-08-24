@@ -12,10 +12,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
         PropertySourcesPlaceholderConfigurer.class,
         HttpConfig.class
 })
-@ComponentScan(
-        basePackageClasses = {
-                BaseServer.class
-        }
-)
+@ComponentScan
 public class BaseConfig {
 }

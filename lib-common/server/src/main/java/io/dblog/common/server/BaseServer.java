@@ -5,16 +5,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.nio.charset.Charset;
+import java.util.Properties;
 
 /**
  * Created by Pelin on 17/6/20.
  */
 public abstract class BaseServer {
 
+    private static final Properties defaultProperties = new Properties();
+
     public static ConfigurableApplicationContext run(Class clazz, String[] args) {
         checkUTF8();
 
         SpringApplication application = new SpringApplication(clazz);
+
+        application.setDefaultProperties(defaultProperties);
         application.addInitializers(context -> {
             if (context.getBeanFactory() instanceof DefaultListableBeanFactory) {
                 ((DefaultListableBeanFactory) context.getBeanFactory()).setAllowBeanDefinitionOverriding(false);

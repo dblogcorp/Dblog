@@ -33,7 +33,7 @@ import org.springframework.http.HttpStatus;
 @EnableConfigurationProperties({
         HttpSetting.class
 })
-@ComponentScan(basePackageClasses = HttpConfig.class)
+@ComponentScan
 @Configuration
 public class HttpConfig {
 

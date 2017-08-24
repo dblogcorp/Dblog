@@ -22,15 +22,15 @@ import org.springframework.context.annotation.Import;
         basePackageClasses = Application.class
 )
 @Import({
-        BaseConfig.class,
-        DBConfig.class,
-        RedisConfig.class
+        //BaseConfig.class,
+        //DBConfig.class,
+        //RedisConfig.class
 })
 public class Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
-        BaseServer.run(Application.class, args);
+        //BaseServer.run(Application.class, args);
     }
 }
