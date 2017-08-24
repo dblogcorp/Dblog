@@ -6,14 +6,17 @@ import io.dblog.sso.entity.Account;
 import io.dblog.sso.repository.AccountRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Pelin on 17/8/1.
  */
+@Service
 public class AccountService {
 
-    @Autowired
-    private AccountRepository accountRepository;
+    @Repository
+    AccountRepository accountRepository;
 
     public AccountProto.Account toProto(Account account) {
         return AccountProto.Account.newBuilder().setId(1)

@@ -10,6 +10,7 @@ import io.dblog.sso.entity.Account;
 import io.dblog.sso.service.account.AccountService;
 import io.dblog.sso.service.common.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by Pelin on 17/8/1.
  */
+@Service
 public class RegisterService {
 
     @Autowired

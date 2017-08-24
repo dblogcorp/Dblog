@@ -30,9 +30,6 @@ import org.springframework.http.HttpStatus;
         HttpMessageConvertersAutoConfiguration.class,
         WebMvcAutoConfiguration.class,
 })
-@EnableConfigurationProperties({
-        HttpSetting.class
-})
 @ComponentScan
 @Configuration
 public class HttpConfig {
@@ -40,6 +37,9 @@ public class HttpConfig {
     private static final Logger logger = LoggerFactory.getLogger(HttpConfig.class);
 
     private static volatile Server server;
+
+    @Autowired
+    private HttpSetting httpSetting;
 
     // Jetty HTTP Server
     //
@@ -49,10 +49,7 @@ public class HttpConfig {
     //
     // [1]: https://github.com/spring-projects/spring-boot/issues/4657
     @Bean
-    @Autowired
-    public JettyEmbeddedServletContainerFactory jettyEmbeddedServletContainerFactory(
-            HttpSetting httpSetting
-    ) {
+    public JettyEmbeddedServletContainerFactory jettyEmbeddedServletContainerFactory() {
         logger.info("Jetty version: " + Server.getVersion());
         JettyEmbeddedServletContainerFactory factory = new JettyEmbeddedServletContainerFactory();
 

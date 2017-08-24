@@ -17,20 +17,18 @@ import org.springframework.context.annotation.Import;
 /**
  * Created by Pelin on 17/8/1.
  */
-@Configuration
-@ComponentScan(
-        basePackageClasses = Application.class
-)
 @Import({
-        //BaseConfig.class,
-        //DBConfig.class,
-        //RedisConfig.class
+        BaseConfig.class,
+        DBConfig.class,
+        RedisConfig.class
 })
+@ComponentScan
+@Configuration
 public class Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
-        //BaseServer.run(Application.class, args);
+        BaseServer.run(Application.class, args);
     }
 }

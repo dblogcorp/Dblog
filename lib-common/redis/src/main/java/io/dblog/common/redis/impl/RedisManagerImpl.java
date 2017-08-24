@@ -18,7 +18,7 @@ public class RedisManagerImpl implements RedisManager {
                 setting.getJedisPoolConfig(),
                 setting.getHost(),
                 setting.getPort(),
-                setting.getTimeOut(),
+                setting.getTimeout(),
                 setting.getPassword(),
                 setting.getDatabase()
         );

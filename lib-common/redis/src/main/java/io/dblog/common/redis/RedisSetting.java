@@ -18,7 +18,7 @@ public class RedisSetting {
 
     private Integer port;
 
-    private Integer timeOut;
+    private Integer timeout;
 
     private String password;
 

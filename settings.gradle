@@ -14,11 +14,15 @@ include 'lib-common:util'
 include 'lib-common:cache'
 include 'lib-common:exception'
 include 'lib-common:email-client'
+include 'lib-common:role'
 
 include 'lib-proto:sso-rpc'
 include 'lib-proto:blog-rpc'
 include 'lib-proto:hub-rpc'
 include 'lib-proto:sso-inter'
 include 'lib-proto:email-client'
-include 'lib-common:role'
+
+include 'lib-jpa:sso-db'
+include 'lib-jpa:personal-db'
+include 'lib-jpa:web-db'
 

@@ -1,6 +1,7 @@
 package io.dblog.sso.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
  */
 @Data
 @Entity
+@EqualsAndHashCode(callSuper=false)
 public class Account extends BaseEntity {
 
     private Short status;
