@@ -9,6 +9,16 @@ dependencies {
     compile "io.grpc:grpc-stub:$grpcVersion"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir "$projectDir/src/main/proto"
+            srcDir "$projectDir/src/gen/main/java"
+            srcDir "$projectDir/src/gen/main/grpc"
+        }
+    }
+}
+
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:$protobufVersion"
@@ -28,13 +38,5 @@ protobuf {
                 option 'enable_deprecated=false'
             }
         }
-    }
-}
-
-idea {
-    module {
-        sourceDirs += file("src/main/proto")
-        sourceDirs += file("src/gen/main/java")
-        sourceDirs += file("src/gen/main/grpc")
     }
 }
