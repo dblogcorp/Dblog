@@ -1,12 +1,15 @@
-package io.dblog.sso.entity;
+package io.dblog.jpa.sso.entity;
 
+import io.dblog.jpa.sso.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 
 /**
- * Created by Pelin on 17/8/1.
+ * {@code AccountRelationship}
+ *
+ * @author Pelin_li(penglong95.li@gmail.com)
  */
 @Data
 @Entity

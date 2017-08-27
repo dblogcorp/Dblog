@@ -1,0 +1,29 @@
+plugins {
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.8"
+}
+
+repositories {
+    //mavenLocal()
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/jcenter/"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "com.mysema.querydsl:querydsl-jpa:$queryDslVersion"
+    compile "com.mysema.querydsl:querydsl-apt:$queryDslVersion"
+}
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = "$projectDir/src/main/java"
+}
+
+//idea {
+//    module {
+//        sourceDirs += file("src/main/java")
+//        sourceDirs += file("src/gen/main/querydsl")
+//    }
+//}

@@ -25,4 +25,3 @@ include 'lib-proto:email-client'
 include 'lib-jpa:sso-db'
 include 'lib-jpa:personal-db'
 include 'lib-jpa:web-db'
-

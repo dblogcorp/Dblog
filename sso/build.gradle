@@ -12,6 +12,8 @@ dependencies {
     compile project(":lib-proto:sso-rpc")
     compile project(":lib-proto:sso-inter")
 
+    compile project (":lib-jpa:sso-db")
+
     compile "com.google.code.gson:gson:$gsonVersion"
     compile "org.springframework.boot:spring-boot-starter-aop:$springBootVersion"
 
