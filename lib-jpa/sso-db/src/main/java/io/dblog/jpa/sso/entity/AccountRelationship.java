@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * {@code AccountRelationship}
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
  */
 @Data
 @Entity
+@Table(name = "`account_relationships`")
 @EqualsAndHashCode(callSuper=false)
 public class AccountRelationship extends BaseEntity {
 

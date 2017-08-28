@@ -1,8 +1,8 @@
 package io.dblog.sso.service.sign;
 
 import io.dblog.common.exception.BadRequestException;
+import io.dblog.jpa.sso.entity.Account;
 import io.dblog.sso.controller.sign.LoginForm;
-import io.dblog.sso.entity.Account;
 import io.dblog.sso.service.account.AccountService;
 import io.dblog.sso.service.session.Session;
 import io.dblog.sso.service.session.SessionStore;

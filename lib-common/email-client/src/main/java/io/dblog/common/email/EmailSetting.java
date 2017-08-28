@@ -2,6 +2,7 @@ package io.dblog.common.email;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -14,10 +15,10 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @Component
+@ConfigurationProperties(prefix = "dblog.email")
 public class EmailSetting {
 
     @Valid
     @NotNull
-    @Value("${dblog.email.url}")
-    private String emailSendUrl;
+    private String url;
 }

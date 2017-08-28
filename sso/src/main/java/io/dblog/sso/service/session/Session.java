@@ -1,6 +1,6 @@
 package io.dblog.sso.service.session;
 
-import io.dblog.sso.entity.Account;
+import io.dblog.jpa.sso.entity.Account;
 import lombok.Data;
 
 import java.util.Date;

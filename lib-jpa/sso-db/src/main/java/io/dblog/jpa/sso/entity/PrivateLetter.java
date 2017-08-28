@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * {@code PrivateLetter}
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
  */
 @Data
 @Entity
+@Table(name = "`private_letters`")
 @EqualsAndHashCode(callSuper=false)
 public class PrivateLetter extends BaseEntity {
 

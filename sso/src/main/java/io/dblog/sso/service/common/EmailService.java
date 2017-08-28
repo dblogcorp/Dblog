@@ -2,7 +2,7 @@ package io.dblog.sso.service.common;
 
 import io.dblog.common.email.inter.EmailClientEnum;
 import io.dblog.common.email.inter.EmailClientService;
-import io.dblog.sso.entity.Account;
+import io.dblog.jpa.sso.entity.Account;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

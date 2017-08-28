@@ -1,13 +1,15 @@
 package io.dblog.sso.repository;
 
-import io.dblog.sso.entity.Account;
-import org.springframework.data.repository.CrudRepository;
+import io.dblog.jpa.sso.entity.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 /**
  * Created by Pelin on 17/8/1.
  */
-public interface AccountRepository extends CrudRepository<Account, Integer> {
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Integer>, QueryDslPredicateExecutor {
 
     Account findByUserName(String userName);
 

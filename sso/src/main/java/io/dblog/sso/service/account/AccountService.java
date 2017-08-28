@@ -1,12 +1,11 @@
 package io.dblog.sso.service.account;
 
+import io.dblog.jpa.sso.entity.Account;
 import io.dblog.proto.sso.api.AccountProto;
 import io.dblog.sso.constant.AccountConstant;
-import io.dblog.sso.entity.Account;
 import io.dblog.sso.repository.AccountRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,8 +14,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountService {
 
-    @Repository
-    AccountRepository accountRepository;
+    @Autowired
+    private AccountRepository accountRepository;
+
+//    @Resource(name = "accountRepository")
+//    private AccountRepository accountRepository;
 
     public AccountProto.Account toProto(Account account) {
         return AccountProto.Account.newBuilder().setId(1)

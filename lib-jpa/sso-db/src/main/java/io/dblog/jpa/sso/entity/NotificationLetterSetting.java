@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * {@code NotificationLetterSetting}
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
  */
 @Data
 @Entity
+@Table(name = "`notification_letter_settings`")
 @EqualsAndHashCode(callSuper=false)
 public class NotificationLetterSetting extends BaseEntity {
 

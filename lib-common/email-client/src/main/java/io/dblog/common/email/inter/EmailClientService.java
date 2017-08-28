@@ -17,5 +17,4 @@ public class EmailClientService {
     public boolean sendEmail(Short topic, Short type, String... to) {
         return true;
     }
-
 }
