@@ -3,9 +3,8 @@ package io.dblog.common.db;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.mariadb.jdbc.Driver;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
@@ -13,15 +12,12 @@ import javax.sql.DataSource;
 /**
  * Created by Pelin on 17/7/18.
  */
-@ComponentScan
 @Configuration
+@EnableConfigurationProperties(DBSetting.class)
 public class DBConfig {
 
-    @Autowired
-    private DBSetting setting;
-
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource(DBSetting setting) {
         HikariConfig config = new HikariConfig();
 
         config.setJdbcUrl(buildJdbcUrl(setting));

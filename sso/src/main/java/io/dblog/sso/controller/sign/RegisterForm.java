@@ -12,8 +12,8 @@ import javax.validation.constraints.Size;
 /**
  * Created by Pelin on 17/8/1.
  */
-@Data
 @EqualsAndHashCode(callSuper = false)
+@Data
 public class RegisterForm extends BaseForm {
 
     @NotBlank(message = "register.user.name.not.null")

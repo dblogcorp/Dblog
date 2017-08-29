@@ -8,8 +8,8 @@ import lombok.EqualsAndHashCode;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-@Data
 @EqualsAndHashCode(callSuper = false)
+@Data
 public class Result {
 
     private int code;

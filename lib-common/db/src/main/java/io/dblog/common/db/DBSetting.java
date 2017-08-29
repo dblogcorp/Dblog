@@ -3,16 +3,14 @@ package io.dblog.common.db;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
 
 /**
  * Created by Pelin on 17/7/24.
  */
-@Data
-@Component
 @ConfigurationProperties(prefix = "jdbc")
+@Data
 public class DBSetting {
 
     @Valid

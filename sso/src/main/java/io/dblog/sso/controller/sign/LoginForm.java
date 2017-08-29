@@ -8,8 +8,8 @@ import org.hibernate.validator.constraints.NotBlank;
 /**
  * Created by Pelin on 17/8/1.
  */
-@Data
 @EqualsAndHashCode(callSuper = false)
+@Data
 public class LoginForm extends BaseForm {
 
     @NotBlank(message = "login.user.name.not.null")

@@ -18,9 +18,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Application.class})
-@WebAppConfiguration
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(classes = {Application.class})
+//@WebAppConfiguration
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AccountRepositoryTest {
 
     @Autowired

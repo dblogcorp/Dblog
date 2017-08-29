@@ -12,9 +12,9 @@ import javax.persistence.Table;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-@Data
 @Entity
 @Table(name = "`private_letters`")
+@Data
 @EqualsAndHashCode(callSuper=false)
 public class PrivateLetter extends BaseEntity {
 

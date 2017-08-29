@@ -2,16 +2,14 @@ package io.dblog.common.redis;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * Redis Setting
  *
  */
-@Data
-@Component
 @ConfigurationProperties(prefix = "cache.redis")
+@Data
 public class RedisSetting {
 
     private String host;

@@ -12,9 +12,9 @@ import javax.persistence.Table;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-@Data
 @Entity
 @Table(name = "`notification_letter_settings`")
+@Data
 @EqualsAndHashCode(callSuper=false)
 public class NotificationLetterSetting extends BaseEntity {
 
