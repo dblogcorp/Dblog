@@ -9,6 +9,7 @@ import io.dblog.sso.service.session.Session;
 import io.dblog.sso.service.session.SessionStore;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -33,7 +34,7 @@ public class RequireRolesAspect {
     @Pointcut("@annotation(requireRoles)")
     public void annotationRequireRoles(RequireRoles requireRoles) {}
 
-    @Before(value = "annotationRequireRoles(requireRoles)", argNames = "point,requireRoles")
+    @Around(value = "annotationRequireRoles(requireRoles)", argNames = "point,requireRoles")
     public void before(ProceedingJoinPoint point, RequireRoles requireRoles) {
         for (Object arg : point.getArgs()) {
             if (!(arg instanceof HttpServletRequest)) {

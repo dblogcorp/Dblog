@@ -35,55 +35,9 @@ import java.util.Properties;
         EmailConfig.class
 })
 @ComponentScan
-@Configuration
-@EnableJpaRepositories
-@EnableTransactionManagement
 public class Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
-
-    @Autowired
-    private DataSource dataSource;
-
-    @Autowired
-    private EntityManagerFactory entityManagerFactory;
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
-
-        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setDataSource(dataSource);
-        factoryBean.setPackagesToScan("io.dblog.jpa.sso.entity");
-        factoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
-        factoryBean.setJpaProperties(additionalProperties());
-        factoryBean.setPersistenceUnitName("mariaDB");
-
-        return factoryBean;
-    }
-
-    private Properties additionalProperties() {
-        Properties properties = new Properties();
-
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.connection.release_mode", "after_transaction");
-        return properties;
-    }
-
-    @Bean
-    public PlatformTransactionManager txManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory);
-
-        return transactionManager;
-    }
-
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
 
     public static void main(String[] args) {
         BaseServer.run(Application.class, args);
