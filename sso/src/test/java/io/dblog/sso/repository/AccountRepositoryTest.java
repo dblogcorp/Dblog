@@ -4,8 +4,6 @@ import io.dblog.jpa.sso.entity.Account;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
 /**
  * {@code AccountRepositoryTest}
  *
