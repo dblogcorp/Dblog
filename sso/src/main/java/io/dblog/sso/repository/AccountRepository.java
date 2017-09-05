@@ -10,8 +10,7 @@ import org.springframework.stereotype.Repository;
  * Created by Pelin on 17/8/1.
  */
 @Repository
-// public interface AccountRepository extends JpaRepository<Account, Integer>, QueryDslPredicateExecutor {
-public interface AccountRepository extends CrudRepository<Account, Integer> {
+public interface AccountRepository extends JpaRepository<Account, Integer>, QueryDslPredicateExecutor {
 
     Account findByUserName(String userName);
 
