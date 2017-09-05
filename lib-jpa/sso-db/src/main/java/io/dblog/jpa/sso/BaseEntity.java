@@ -27,16 +27,16 @@ public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    protected Integer id;
 
     @Column(name = "`created_at`")
-    private Timestamp createdAt;
+    protected Timestamp createdAt;
 
     @Column(name = "`updated_at`")
-    private Timestamp updatedAt;
+    protected Timestamp updatedAt;
 
     @Column(name = "`deleted_at`")
-    private Timestamp deletedAt;
+    protected Timestamp deletedAt;
 
     @PrePersist
     void onCreate() {

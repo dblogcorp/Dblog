@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * {@code AccountRepositoryTest}
@@ -48,6 +48,33 @@ public class AccountRepositoryTest extends BaseRepositoryTest {
         assertNotNull(
                 "AccountRepository save() failed",
                 accountRepository.save(account)
+        );
+    }
+
+    @Test
+    public void testDelete() {
+        accountRepository.delete(3);
+    }
+
+    @Test
+    public void testUpdate() {
+        Account account = accountRepository.findOne(1);
+        account.setName("测试更新");
+
+        Account tmp = accountRepository.save(account);
+        assertNotNull("save() failed, result is null", tmp);
+        assertNotEquals(
+                "AccountRepository save() failed, update failed",
+                account.toString(),
+                tmp.toString()
+        );
+    }
+
+    @Test
+    public void testFindByUserName() {
+        assertNotNull(
+                "AccountRepository findByUserName() failed, result is null",
+                accountRepository.findByUserName("lipenglong")
         );
     }
 }
