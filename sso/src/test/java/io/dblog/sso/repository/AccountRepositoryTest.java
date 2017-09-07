@@ -59,15 +59,10 @@ public class AccountRepositoryTest extends BaseRepositoryTest {
     @Test
     public void testUpdate() {
         Account account = accountRepository.findOne(1);
-        account.setName("测试更新");
+        account.setName("Test");
 
         Account tmp = accountRepository.save(account);
         assertNotNull("save() failed, result is null", tmp);
-        assertNotEquals(
-                "AccountRepository save() failed, update failed",
-                account.toString(),
-                tmp.toString()
-        );
     }
 
     @Test
