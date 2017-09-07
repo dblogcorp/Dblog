@@ -5,6 +5,7 @@ import io.dblog.common.email.EmailConfig;
 import io.dblog.common.redis.RedisConfig;
 import io.dblog.common.server.BaseConfig;
 import io.dblog.common.server.BaseServer;
+import io.dblog.sso.config.JpaConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ import java.util.Properties;
         BaseConfig.class,
         DBConfig.class,
         RedisConfig.class,
-        EmailConfig.class
+        EmailConfig.class,
+        JpaConfig.class
 })
 @ComponentScan
 public class Application {

@@ -18,15 +18,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * @author Pelin_li(penglong95.li@gmail.com)
  */
 @RunWith(SpringRunner.class)
-//@TestPropertySource(
-//        locations = "classpath:application-test.properties"
-//)
-//@EnableAutoConfiguration
 @ContextConfiguration(classes = {
         DBConfig.class,
         JpaConfig.class
 })
-//@WebAppConfiguration
-@SpringBootTest(classes = AccountRepositoryTest.class)
+@SpringBootTest(classes = {
+        AccountRepositoryTest.class
+})
 public abstract class BaseRepositoryTest {
 }
