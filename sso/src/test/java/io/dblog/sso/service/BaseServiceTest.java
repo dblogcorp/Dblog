@@ -4,7 +4,9 @@ import io.dblog.common.db.DBConfig;
 import io.dblog.common.email.EmailConfig;
 import io.dblog.common.redis.RedisConfig;
 import io.dblog.sso.config.JpaConfig;
+import org.junit.FixMethodOrder;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -27,6 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
         JpaConfig.class
 })
 @TestPropertySource(locations = "classpath:test.properties")
+@FixMethodOrder(MethodSorters.JVM)
 @ComponentScan
 public abstract class BaseServiceTest {
 }

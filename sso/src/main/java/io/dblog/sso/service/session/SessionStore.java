@@ -1,9 +1,11 @@
 package io.dblog.sso.service.session;
 
 import io.dblog.common.redis.inter.RedisManager;
+import io.dblog.common.util.SeriailizeUtils;
 import io.dblog.common.util.json.JSONutils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.beans.BeanMap;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,7 +27,7 @@ public class SessionStore {
             expireSeconds = 31536000;
         }
 
-        return redisManager.setex(sid, expireSeconds, session.toString());
+        return redisManager.setex(sid, expireSeconds, JSONutils.toJson(session));
     }
 
     public Session get(String sid) {
