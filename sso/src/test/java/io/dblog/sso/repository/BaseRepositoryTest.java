@@ -25,5 +25,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest(classes = {
         AccountRepositoryTest.class
 })
+@TestPropertySource(locations = "classpath:test.properties")
 public abstract class BaseRepositoryTest {
 }

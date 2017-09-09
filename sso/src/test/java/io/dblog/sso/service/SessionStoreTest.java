@@ -1,5 +1,6 @@
 package io.dblog.sso.service;
 
+import io.dblog.common.redis.inter.RedisManager;
 import io.dblog.sso.service.session.SessionStore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-public class SessionStoreTest extends BaseService {
+public class SessionStoreTest extends BaseServiceTest {
 
     @Autowired
     private SessionStore sessionStore;
 
-    @Test
-    public void testSet() {
-        System.out.println(sessionStore);
-    }
+    @Autowired
+    private RedisManager redisManager;
 }
