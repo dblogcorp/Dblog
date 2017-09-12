@@ -2,6 +2,7 @@ package io.dblog.sso.service.account;
 
 import io.dblog.jpa.sso.entity.Account;
 import io.dblog.proto.sso.api.AccountProto;
+import io.dblog.sso.annotations.RequireRoles;
 import io.dblog.sso.constant.AccountConstant;
 import io.dblog.sso.repository.AccountRepository;
 import org.apache.commons.lang3.StringUtils;
@@ -17,8 +18,10 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-//    @Resource(name = "accountRepository")
-//    private AccountRepository accountRepository;
+    @RequireRoles
+    public void test() {
+        System.out.println("Test");
+    }
 
     public AccountProto.Account toProto(Account account) {
         return AccountProto.Account.newBuilder().setId(1)

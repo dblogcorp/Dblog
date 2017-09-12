@@ -15,6 +15,9 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -24,51 +27,44 @@ import java.util.Arrays;
  *
  * @author Pelin_li(penglong95.li@gmail.com)
  */
-@Component
 @Aspect
+@Component
 public class RequireRolesAspect {
 
     @Autowired
     private SessionStore sessionStore;
 
-    @Pointcut("@annotation(requireRoles)")
-    public void annotationRequireRoles(RequireRoles requireRoles) {}
+    @Around("@annotation(requireRoles)")
+    public void around(RequireRoles requireRoles) {
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = servletRequestAttributes.getRequest();
 
-    @Around(value = "annotationRequireRoles(requireRoles)", argNames = "point,requireRoles")
-    public void before(ProceedingJoinPoint point, RequireRoles requireRoles) {
-        for (Object arg : point.getArgs()) {
-            if (!(arg instanceof HttpServletRequest)) {
-                continue;
-            }
+        String sid = (String) request.getAttribute("sid");
+        if (StringUtils.isBlank(sid)) {
+            return;
+        }
 
-            HttpServletRequest request = (HttpServletRequest) arg;
-            String sid = (String) request.getAttribute("sid");
-            if (StringUtils.isBlank(sid)) {
-                return;
-            }
+        Session session = sessionStore.get(sid);
+        if (null == session) {
+            throw new UnauthorizedException("user.has.not.login");
+        }
 
-            Session session = sessionStore.get(sid);
-            if (null == session) {
-                throw new UnauthorizedException("user.has.not.login");
-            }
+        Account account = session.getAccount();
+        if (null == account) {
+            throw new UnauthorizedException("user.permission.check.failed");
+        }
 
-            Account account = session.getAccount();
-            if (null == account) {
-                throw new UnauthorizedException("user.permission.check.failed");
-            }
+        RoleEnum[] roleGroupArr = requireRoles.value();
+        if (roleGroupArr.length <= 0) {
+            return;
+        }
 
-            RoleEnum[] roleGroupArr = requireRoles.value();
-            if (roleGroupArr.length <= 0) {
-                return;
-            }
-
-            Integer role = account.getRole();
-            Integer roleGroup = Math.toIntExact(
-                    Arrays.stream(roleGroupArr).map(RoleEnum::getRole).count()
-            );
-            if (!RoleUtils.isInGroup(role, roleGroup)) {
-                throw new UnauthorizedException("user.has.no.permission");
-            }
+        Integer role = account.getRole();
+        Integer roleGroup = Math.toIntExact(
+                Arrays.stream(roleGroupArr).map(RoleEnum::getRole).count()
+        );
+        if (!RoleUtils.isInGroup(role, roleGroup)) {
+            throw new UnauthorizedException("user.has.no.permission");
         }
     }
 }
