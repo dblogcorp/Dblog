@@ -1,6 +1,6 @@
 package io.dblog.sso.filter;
 
-import io.dblog.sso.service.session.Session;
+import io.dblog.sso.util.CookieUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.Filter;
@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -30,20 +31,12 @@ public class SessionFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (null == cookie) {
-                continue;
-            }
-
-            String cookieName = cookie.getName();
-            if (Objects.equals(cookieName, "sid") && StringUtils.isNotBlank(cookie.getValue())) {
-                chain.doFilter(req, resp);
-                return;
-            }
+        if (null != CookieUtils.getByName(request, CookieUtils.SESSION_NAME)) {
+            chain.doFilter(req, resp);
+            return;
         }
 
-        Cookie cookie = new Cookie("sid", "456789");
+        Cookie cookie = new Cookie(CookieUtils.SESSION_NAME, "456789");
         cookie.setMaxAge(11111111);
 
         HttpServletResponse response = (HttpServletResponse) resp;

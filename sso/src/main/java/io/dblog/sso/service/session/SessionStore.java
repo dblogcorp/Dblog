@@ -19,7 +19,7 @@ public class SessionStore {
     @Autowired
     private RedisManager redisManager;
 
-    public String set(String sid, Session session) {
+    public String set(String authId, Session session) {
         int expireSeconds;
         if (null != session.getRememberMe() && session.getRememberMe()) {
             expireSeconds = 3600;
@@ -27,11 +27,11 @@ public class SessionStore {
             expireSeconds = 31536000;
         }
 
-        return redisManager.setex(sid, expireSeconds, JSONutils.toJson(session));
+        return redisManager.setex(authId, expireSeconds, JSONutils.toJson(session));
     }
 
-    public Session get(String sid) {
-        String json = redisManager.get(sid);
+    public Session get(String authId) {
+        String json = redisManager.get(authId);
 
         if (StringUtils.isNotBlank(json)) {
             return JSONutils.fromJson(json, Session.class);
@@ -39,7 +39,7 @@ public class SessionStore {
         return null;
     }
 
-    public Long refresh(String sid, Session session) {
+    public Long refresh(String authId, Session session) {
         int expireSeconds;
         if (null != session.getRememberMe() && session.getRememberMe()) {
             expireSeconds = 3600;
@@ -47,14 +47,14 @@ public class SessionStore {
             expireSeconds = 31536000;
         }
 
-        return expire(sid, expireSeconds);
+        return expire(authId, expireSeconds);
     }
 
-    public Long expire(String sid, int expire) {
-        return redisManager.expire(sid, expire);
+    public Long expire(String authId, int expire) {
+        return redisManager.expire(authId, expire);
     }
 
-    public Long del(String sid) {
-        return redisManager.del(sid);
+    public Long del(String authId) {
+        return redisManager.del(authId);
     }
 }

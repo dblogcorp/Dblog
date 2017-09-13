@@ -9,6 +9,7 @@ import io.dblog.sso.constant.AccountConstant;
 import io.dblog.sso.controller.sign.RegisterForm;
 import io.dblog.sso.service.account.AccountService;
 import io.dblog.sso.service.common.EmailService;
+import io.dblog.sso.util.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,8 +56,8 @@ public class RegisterService {
         }
         emailService.sendRegisterEmail(account);
 
-        String sid = (String) request.getAttribute("sid");
-        loginService.updateLoginSession(account, sid);
+        String authId = CookieUtils.getAuthId(request);
+        loginService.updateLoginSession(account, authId);
 
         return accountService.toProto(account);
     }

@@ -7,6 +7,7 @@ import io.dblog.jpa.sso.entity.Account;
 import io.dblog.sso.annotations.RequireRoles;
 import io.dblog.sso.service.session.Session;
 import io.dblog.sso.service.session.SessionStore;
+import io.dblog.sso.util.CookieUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -39,12 +40,12 @@ public class RequireRolesAspect {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
 
-        String sid = (String) request.getAttribute("sid");
-        if (StringUtils.isBlank(sid)) {
+        String authId = CookieUtils.getAuthId(request);
+        if (StringUtils.isBlank(authId)) {
             return;
         }
 
-        Session session = sessionStore.get(sid);
+        Session session = sessionStore.get(authId);
         if (null == session) {
             throw new UnauthorizedException("user.has.not.login");
         }

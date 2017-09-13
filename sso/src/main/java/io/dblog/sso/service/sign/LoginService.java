@@ -6,6 +6,7 @@ import io.dblog.sso.controller.sign.LoginForm;
 import io.dblog.sso.service.account.AccountService;
 import io.dblog.sso.service.session.Session;
 import io.dblog.sso.service.session.SessionStore;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,31 +32,36 @@ public class LoginService {
 
     }
 
-    public void updateLoginSession(String userName, String sid) {
+    public void updateLoginSession(String userName, String authId) {
         Account account = accountService.findByUserName(userName);
         if (null == account) {
             logger.error("Login Error: user not exists, userName=" + userName);
             throw new BadRequestException("login.account.is.not.existed");
         }
 
-        updateLoginSession(account, sid, false);
+        updateLoginSession(account, authId, false);
     }
 
-    public void updateLoginSession(Account account, String sid) {
+    public void updateLoginSession(Account account, String authId) {
         if (null == account) {
             logger.error("Login Error: user not exists");
             throw new BadRequestException("login.account.is.not.existed");
         }
 
-        updateLoginSession(account, sid, false);
+        updateLoginSession(account, authId, false);
     }
 
-    public void updateLoginSession(Account account, String sid, Boolean rememberMe) {
+    public void updateLoginSession(Account account, String authId, Boolean rememberMe) {
+        if (StringUtils.isBlank(authId)) {
+            logger.error("Session update failed!");
+            throw new BadRequestException("login.session.update.failed");
+        }
+
         Session session = new Session();
         session.setAccount(account);
         session.setRememberMe(rememberMe);
 
-        sessionStore.set(sid, session);
+        sessionStore.set(authId, session);
     }
 
 }
