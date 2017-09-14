@@ -1,8 +1,8 @@
 package io.dblog.sso.service.sign;
 
 import io.dblog.common.exception.BadRequestException;
-import io.dblog.common.role.RoleConstant;
 import io.dblog.common.role.RoleEnum;
+import io.dblog.common.util.EncryptUtils;
 import io.dblog.jpa.sso.entity.Account;
 import io.dblog.proto.sso.api.AccountProto;
 import io.dblog.sso.constant.AccountConstant;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Pelin on 17/8/1.
@@ -33,7 +34,7 @@ public class RegisterService {
 
     @Transactional
     public AccountProto.Account register(HttpServletRequest request, RegisterForm form,
-                                         String userAgent, String registerIp) {
+                                         String userAgent, String registerIp) throws NoSuchAlgorithmException {
         String email = form.getEmail();
         String userName = form.getUserName();
         if (accountService.checkAccountExists(userName, email)) {
@@ -45,7 +46,12 @@ public class RegisterService {
         account.setUserName(form.getUserName());
         account.setName(form.getUserName());
         account.setEmail(form.getEmail());
-        account.setPassword(form.getPassword());
+        account.setPassword(
+                EncryptUtils.SHA256(
+                        form.getPassword(),
+                        form.getUserName()
+                )
+        );
         account.setRole(RoleEnum.GENERAL.getId());
         account.setGravatar("");
         account.setEmailValidation(false);

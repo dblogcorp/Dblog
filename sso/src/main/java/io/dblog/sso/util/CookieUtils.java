@@ -1,10 +1,15 @@
 package io.dblog.sso.util;
 
+import io.dblog.common.util.EncryptUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * {@code CookieUtils}
@@ -42,5 +47,12 @@ public class CookieUtils {
         }
 
         return cookie.getValue();
+    }
+
+    public static String generateAuthId() throws NoSuchAlgorithmException {
+        String uuid = UUID.randomUUID().toString();
+        uuid = uuid.replace("-", "");
+
+        return EncryptUtils.SHA1(uuid);
     }
 }

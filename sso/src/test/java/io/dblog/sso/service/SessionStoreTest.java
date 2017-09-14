@@ -19,13 +19,13 @@ public class SessionStoreTest extends BaseServiceTest {
     @Autowired
     private SessionStore sessionStore;
 
-    private String sid;
+    private String authId;
 
     private Session session;
 
     @Before
     public void init() {
-        sid = "user:001";
+        authId = "user:001";
         session = new Session();
 
         Account account = new Account();
@@ -35,12 +35,12 @@ public class SessionStoreTest extends BaseServiceTest {
 
     @Test
     public void testSet() {
-        assertEquals("OK", sessionStore.set(sid, session));
+        assertEquals("OK", sessionStore.set(authId, session));
     }
 
     @Test
     public void testGet() {
-        Session tmp = sessionStore.get(sid);
+        Session tmp = sessionStore.get(authId);
 
         assertNotNull("SessionStore get() is failed, result is null!", tmp);
     }

@@ -1,7 +1,6 @@
 package io.dblog.sso.filter;
 
 import io.dblog.sso.util.CookieUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,8 +13,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Objects;
+import java.security.NoSuchAlgorithmException;
+
+import static io.dblog.sso.util.CookieUtils.generateAuthId;
 
 /**
  * {@code SessionFilter}
@@ -29,15 +29,20 @@ public class SessionFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {}
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
+            throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         if (null != CookieUtils.getByName(request, CookieUtils.SESSION_NAME)) {
             chain.doFilter(req, resp);
             return;
         }
 
-        Cookie cookie = new Cookie(CookieUtils.SESSION_NAME, "456789");
-        cookie.setMaxAge(11111111);
+        Cookie cookie;
+        try {
+            cookie = new Cookie(CookieUtils.SESSION_NAME, generateAuthId());
+        } catch (NoSuchAlgorithmException e) {
+            return;
+        }
 
         HttpServletResponse response = (HttpServletResponse) resp;
         response.addCookie(cookie);

@@ -15,20 +15,20 @@ import javax.validation.Valid;
  * Created by Pelin on 17/8/1.
  */
 @RestController
-@RequestMapping(value = "/api/v1/sign")
+@RequestMapping(value = "/api/v1")
 public class SignController {
 
     @Autowired
     private RegisterService registerService;
 
-    @RequestMapping(value = "/up", method = RequestMethod.POST)
+    @RequestMapping(value = "signup", method = RequestMethod.POST)
     public void register(@Valid RegisterForm form, HttpServletRequest request,
                       @RequestHeader(value = "User-Agent") String userAgent,
                       @RequestAttribute String realRemoteAddress) {
         registerService.register(request, form, userAgent, realRemoteAddress);
     }
 
-    @RequestMapping(value = "/in", method = RequestMethod.POST)
+    @RequestMapping(value = "signin", method = RequestMethod.POST)
     public void login(@Valid LoginForm form, HttpServletRequest request,
                       @RequestHeader(value = "User-Agent") String userAgent,
                       @RequestAttribute String realRemoteAddress) {
